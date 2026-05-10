@@ -31,14 +31,9 @@ class _MyProfileAppState extends State<MyProfileApp> {
 }
 
 class ProfilePage extends StatelessWidget {
+  final VoidCallback toggleTheme;
 
-
-final VoidCallback toggleTheme;
-
-const ProfilePage({
-  super.key,
-  required this.toggleTheme,
-});
+  const ProfilePage({super.key, required this.toggleTheme});
 
   @override
   Widget build(BuildContext context) {
@@ -50,23 +45,18 @@ const ProfilePage({
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         actions: [
-  IconButton(
-    onPressed: toggleTheme,
-    icon: const Icon(Icons.dark_mode),
-  ),
-],
+          IconButton(onPressed: toggleTheme, icon: const Icon(Icons.dark_mode)),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-  backgroundColor: Colors.deepPurple,
-  onPressed: () {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("Thanks for visiting! 🚀"),
+        backgroundColor: Colors.deepPurple,
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Thanks for visiting! 🚀")),
+          );
+        },
+        child: const Icon(Icons.favorite),
       ),
-    );
-  },
-  child: const Icon(Icons.favorite),
-),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: 20),
@@ -80,7 +70,7 @@ const ProfilePage({
               ),
               const SizedBox(height: 20),
               const Text(
-                "Rakib Hasan",
+                "Md. Mahfuzul Amin RAJU",
                 style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
@@ -118,22 +108,20 @@ const ProfilePage({
                 "Flutter, Dart, Firebase,\nOracle,REST API, HTML, CSS",
               ),
               const SizedBox(height: 20),
-const Text(
-  "Connect With Me",
-  style: TextStyle(
-    fontWeight: FontWeight.bold,
-  ),
-),
-const SizedBox(height: 16),
+              const Text(
+                "Connect With Me",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
 
-Row(
-  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-  children: [
-    socialIcon(Icons.facebook, Colors.blue),
-    socialIcon(Icons.code, Colors.black),
-    socialIcon(Icons.email, Colors.red),
-  ],
-),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  socialIcon(Icons.facebook, Colors.blue),
+                  socialIcon(Icons.code, Colors.black),
+                  socialIcon(Icons.email, Colors.red),
+                ],
+              ),
             ],
           ),
         ),
@@ -175,15 +163,10 @@ Widget infoCard(IconData icon, Color color, String title, String subtitle) {
   );
 }
 
-
 Widget socialIcon(IconData icon, Color color) {
   return CircleAvatar(
     radius: 26,
     backgroundColor: color.withOpacity(0.15),
-    child: Icon(
-      icon,
-      color: color,
-      size: 28,
-    ),
+    child: Icon(icon, color: color, size: 28),
   );
 }
