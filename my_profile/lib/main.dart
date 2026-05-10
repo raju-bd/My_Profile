@@ -32,40 +32,53 @@ class ProfilePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: width * 0.05,
-            vertical: 20,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: 20),
           child: Column(
-            children: const [
-              CircleAvatar(
+            children: [
+              const CircleAvatar(
                 radius: 60,
                 backgroundImage: NetworkImage(
                   'https://avatars.githubusercontent.com/u/14306684?v=4',
                 ),
               ),
-              SizedBox(height: 20),
-              Text(
-                "Md Mahfuzul Amin RAJU",
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                ),
+              const SizedBox(height: 20),
+              const Text(
+                "Rakib Hasan",
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 "Flutter Beginner & Future App Developer",
-                style: TextStyle(
-                  color: Colors.deepPurple,
-                  fontSize: 16,
-                ),
+                style: TextStyle(color: Colors.deepPurple, fontSize: 16),
               ),
-              SizedBox(height: 16),
-              Text(
+              const SizedBox(height: 16),
+              const Text(
                 "I love building mobile apps with Flutter.\n"
                 "Learning new things every day and\n"
                 "enjoying the journey 🚀",
                 textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 25),
+
+              infoCard(
+                Icons.location_on,
+                Colors.deepPurple,
+                "Location",
+                "Dhaka, Bangladesh",
+              ),
+
+              infoCard(
+                Icons.school,
+                Colors.green,
+                "Education",
+                "M.Com\nNational University",
+              ),
+
+              infoCard(
+                Icons.code,
+                Colors.blue,
+                "Skills",
+                "Flutter, Dart, Firebase,\nOracle,REST API, HTML, CSS",
               ),
             ],
           ),
@@ -73,4 +86,37 @@ class ProfilePage extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget infoCard(IconData icon, Color color, String title, String subtitle) {
+  return Container(
+    margin: const EdgeInsets.only(bottom: 15),
+    padding: const EdgeInsets.all(18),
+    decoration: BoxDecoration(
+      color: color.withOpacity(0.08),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    child: Row(
+      children: [
+        CircleAvatar(
+          backgroundColor: color,
+          child: Icon(icon, color: Colors.white),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: TextStyle(color: color, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 4),
+              Text(subtitle),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
