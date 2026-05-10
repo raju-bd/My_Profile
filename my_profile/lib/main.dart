@@ -4,21 +4,41 @@ void main() {
   runApp(const MyProfileApp());
 }
 
-class MyProfileApp extends StatelessWidget {
+class MyProfileApp extends StatefulWidget {
   const MyProfileApp({super.key});
+
+  @override
+  State<MyProfileApp> createState() => _MyProfileAppState();
+}
+
+class _MyProfileAppState extends State<MyProfileApp> {
+  bool darkMode = false;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Profile App',
-      home: const ProfilePage(),
+      theme: darkMode ? ThemeData.dark() : ThemeData.light(),
+      home: ProfilePage(
+        toggleTheme: () {
+          setState(() {
+            darkMode = !darkMode;
+          });
+        },
+      ),
     );
   }
 }
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+
+
+final VoidCallback toggleTheme;
+
+const ProfilePage({
+  super.key,
+  required this.toggleTheme,
+});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +49,24 @@ class ProfilePage extends StatelessWidget {
         title: const Text("My Profile"),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
+        actions: [
+  IconButton(
+    onPressed: toggleTheme,
+    icon: const Icon(Icons.dark_mode),
+  ),
+],
       ),
+      floatingActionButton: FloatingActionButton(
+  backgroundColor: Colors.deepPurple,
+  onPressed: () {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text("Thanks for visiting! 🚀"),
+      ),
+    );
+  },
+  child: const Icon(Icons.favorite),
+),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: 20),
@@ -80,6 +117,23 @@ class ProfilePage extends StatelessWidget {
                 "Skills",
                 "Flutter, Dart, Firebase,\nOracle,REST API, HTML, CSS",
               ),
+              const SizedBox(height: 20),
+const Text(
+  "Connect With Me",
+  style: TextStyle(
+    fontWeight: FontWeight.bold,
+  ),
+),
+const SizedBox(height: 16),
+
+Row(
+  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  children: [
+    socialIcon(Icons.facebook, Colors.blue),
+    socialIcon(Icons.code, Colors.black),
+    socialIcon(Icons.email, Colors.red),
+  ],
+),
             ],
           ),
         ),
@@ -117,6 +171,19 @@ Widget infoCard(IconData icon, Color color, String title, String subtitle) {
           ),
         ),
       ],
+    ),
+  );
+}
+
+
+Widget socialIcon(IconData icon, Color color) {
+  return CircleAvatar(
+    radius: 26,
+    backgroundColor: color.withOpacity(0.15),
+    child: Icon(
+      icon,
+      color: color,
+      size: 28,
     ),
   );
 }
