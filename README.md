@@ -1,10 +1,10 @@
-# my_profile
+# My Profile
 
 Simple personal profile Flutter app — displays user details and contact links.
 
 ## Screenshot
 
-![App screenshot](screenshot/screenshot.png)
+![App screenshot](my_profile/screenshot/screenshot.png)
 
 ## Getting Started
 
