@@ -4,7 +4,7 @@ Simple personal profile Flutter app — displays user details and contact links.
 
 ## Screenshot
 
-![App screenshot](my_profile/screenshot/screenshot.png)
+<img src="my_profile/screenshot/screenshot.png" alt="App screenshot" width="400" />
 
 ## Getting Started
 
