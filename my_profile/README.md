@@ -1,6 +1,10 @@
 # my_profile
 
-A new Flutter project.
+Simple personal profile Flutter app — displays user details and contact links.
+
+## Screenshot
+
+![App screenshot](screenshot/screenshot.svg)
 
 ## Getting Started
 
